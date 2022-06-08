@@ -6,7 +6,11 @@ class Rover {
 
     String execute(String commands) {
         for (char command : commands.toCharArray()) {
-            direction = rotateRight();
+            if (command == 'R') {
+                direction = rotateRight();
+            } else {
+                direction = "W";
+            }
         }
         return "0:0:" + direction;
     }
