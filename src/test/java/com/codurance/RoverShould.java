@@ -92,7 +92,7 @@ public class RoverShould {
             "LLM, 0:9:S",
             "LLMMMMM, 0:5:S",
     })
-    public void move_south(String commands, String position) {
+    public void move_down(String commands, String position) {
         assertThat(rover.execute(commands), is(position));
     }
 }
