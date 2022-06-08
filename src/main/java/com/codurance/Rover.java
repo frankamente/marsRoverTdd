@@ -31,10 +31,11 @@ class Rover {
             x = (x + 1) % MAX_WIDTH;
         }
         if (direction == Direction.SOUTH) {
-            y--;
+            y = (y > 0) ? y - 1 : MAX_HEIGHT - 1;
         }
         if (direction == Direction.WEST) {
-            x--;
+
+            x = (x > 0) ? x - 1 : MAX_WIDTH - 1;
         }
 
         return new Coordinate(x, y);
