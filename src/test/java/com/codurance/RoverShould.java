@@ -1,11 +1,15 @@
 package com.codurance;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+@RunWith(JUnitParamsRunner.class)
 public class RoverShould {
 
     private Rover rover;
@@ -16,7 +20,10 @@ public class RoverShould {
     }
 
     @Test
-    public void rotate_right() {
-        assertThat(rover.execute("R"), is("0:0:E"));
+    @Parameters({
+            "R, 0:0:E"
+    })
+    public void rotate_right(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
     }
 }
