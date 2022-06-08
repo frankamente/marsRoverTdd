@@ -3,7 +3,8 @@ package com.codurance;
 class Rover {
 
     private final Grid grid;
-    Direction direction;
+
+    private Direction direction;
     private Coordinate coordinate;
 
     Rover(Grid grid) {
