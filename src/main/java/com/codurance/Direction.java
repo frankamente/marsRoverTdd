@@ -19,17 +19,16 @@ public enum Direction {
     }
 
     public Direction right() {
-        for (Direction direction : values()) {
-            if (right.equals(direction.value)) {
-                return direction;
-            }
-        }
-        return Direction.NORTH;
+        return directionToThe(right);
     }
 
     public Direction left() {
+        return directionToThe(left);
+    }
+
+    private Direction directionToThe(String rotateTo) {
         for (Direction direction : values()) {
-            if (left.equals(direction.value)) {
+            if (rotateTo.equals(direction.value)) {
                 return direction;
             }
         }
