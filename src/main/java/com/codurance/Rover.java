@@ -23,16 +23,17 @@ class Rover {
             } else if (command == 'L') {
                 direction = direction.left();
             } else {
-                Optional<Coordinate> nextCoordinate =
-                        grid.nextCoordinateFor(coordinate, direction);
-
-                if (nextCoordinate.isPresent()) {
-                    coordinate = nextCoordinate.get();
-                } else {
-                    obstacle = "O:";
-                }
+                obstacle = move();
             }
         }
         return obstacle + coordinate.x() + ":" + coordinate.y() + ":" + direction.value();
+    }
+
+    private String move() {
+        Optional<Coordinate> nextCoordinate =
+                grid.nextCoordinateFor(coordinate, direction);
+
+        nextCoordinate.ifPresent(oc -> coordinate = oc);
+        return nextCoordinate.isPresent() ? "" : "O:";
     }
 }
