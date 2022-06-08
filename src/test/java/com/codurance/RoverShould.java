@@ -53,9 +53,19 @@ public class RoverShould {
 
     @Test
     @Parameters({
-            "MMMMMMMMMM, 0:0:N"
+            "MMMMMMMMMM, 0:0:N",
+            "MMMMMMMMMMMMMMM, 0:5:N"
     })
     public void wrap_from_top_to_bottom_when_moving_north(String commands, String position) {
+        assertThat(rover.execute(commands), is(position));
+    }
+
+    @Test
+    @Parameters({
+            "RM, 1:0:E",
+            "RMMM, 3:0:E"
+    })
+    public void move_right(String commands, String position) {
         assertThat(rover.execute(commands), is(position));
     }
 }

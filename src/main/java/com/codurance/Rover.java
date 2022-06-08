@@ -27,13 +27,13 @@ class Rover {
             y = (y + 1) % MAX_HEIGHT;
         }
         if (direction == Direction.EAST) {
-            x--;
+            x++;
         }
         if (direction == Direction.SOUTH) {
             y--;
         }
         if (direction == Direction.WEST) {
-            x++;
+            x--;
         }
 
         return new Coordinate(x, y);
