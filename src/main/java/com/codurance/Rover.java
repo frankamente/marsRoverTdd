@@ -2,17 +2,38 @@ package com.codurance;
 
 class Rover {
 
-
     Direction direction = Direction.NORTH;
+    private Coordinate coordinate = new Coordinate(0, 0);
 
     String execute(String commands) {
         for (char command : commands.toCharArray()) {
             if (command == 'R') {
                 direction = direction.right();
-            } else {
+            } else if (command == 'L') {
                 direction = direction.left();
+            } else {
+                coordinate = move(direction);
             }
         }
-        return "0:0:" + direction.value();
+        return coordinate.x() + ":" + coordinate.y() + ":" + direction.value();
+    }
+
+
+    public Coordinate move(Direction direction) {
+        int x = coordinate.x();
+        int y = coordinate.y();
+        if (direction == Direction.NORTH) {
+            y++;
+        }
+        if (direction == Direction.EAST) {
+            x--;
+        }
+        if (direction == Direction.SOUTH) {
+            y--;
+        }
+        if (direction == Direction.WEST) {
+            x++;
+        }
+        return new Coordinate(x, y);
     }
 }

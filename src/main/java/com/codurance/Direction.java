@@ -26,9 +26,9 @@ public enum Direction {
         return directionToThe(left);
     }
 
-    private Direction directionToThe(String rotateTo) {
+    private Direction directionToThe(String nextDirection) {
         for (Direction direction : values()) {
-            if (rotateTo.equals(direction.value)) {
+            if (nextDirection.equals(direction.value)) {
                 return direction;
             }
         }
