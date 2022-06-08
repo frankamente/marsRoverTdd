@@ -1,5 +1,7 @@
 package com.codurance;
 
+import java.util.Optional;
+
 class Rover {
 
     private final Grid grid;
@@ -14,15 +16,23 @@ class Rover {
     }
 
     String execute(String commands) {
+        String obstacle = "";
         for (char command : commands.toCharArray()) {
             if (command == 'R') {
                 direction = direction.right();
             } else if (command == 'L') {
                 direction = direction.left();
             } else {
-                coordinate = grid.nextCoordinateFor(coordinate, direction);
+                Optional<Coordinate> nextCoordinate =
+                        grid.nextCoordinateFor(coordinate, direction);
+
+                if (nextCoordinate.isPresent()) {
+                    coordinate = nextCoordinate.get();
+                } else {
+                    obstacle = "O:";
+                }
             }
         }
-        return coordinate.x() + ":" + coordinate.y() + ":" + direction.value();
+        return obstacle + coordinate.x() + ":" + coordinate.y() + ":" + direction.value();
     }
 }
